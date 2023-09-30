@@ -3,7 +3,7 @@ public class Ciudadano {
     private C_origen c_origen;
 
     public Ciudadano(String nombre, String cedula, C_origen c_origen) {
-        super(nombre,cedula,c_origen);
+        super();
         this.nombre = nombre;
         this.cedula = cedula;
         this.c_origen = c_origen;
