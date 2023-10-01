@@ -1,6 +1,6 @@
 public enum C_origen {
-    Andalucia, Bugalagrande, El_Cerrito, Ginebra, Guacari, Buga, Riofrio, Trujillo, Calima, Darien, Restrepo, San_Pedro,
-    Tulua, Yotoco, El_Aguila, Alcala, Ansermanuevo, Argelia, El_Cairo, La_Union, La_Victoria, Ulloa, Bolivar, Cartago,
-    el_Dovio, Obando, Roldanillo, Toro, Versalles, Zarzal, Buenaventura, Caicedonia, Sevilla, Cali, Candelaria, Palmira,
-    Dagua, Florida, Jamundi, la_Cumbre, Pradera, Vijes, Yumbo
+    ANDALUCIA, BUGALAGRANDE, EL_CERRITO, GINEBRA, GUACARI, BUGA, RIOFRIO, TRUJILLO, CALIMA, DARIEN, RESTREPO, SAN_PEDRO,
+    TULUA, YOTOCO, EL_AGUILA, ALCALA, ANSERMANUEVO, ARGELIA, EL_CAIRO, LA_UNION, LA_VICTORIA, ULLOA, BOLIVAR, CARTAGO,
+    EL_DOVIO, OBANDO, ROLDANILLO, TORO, VERSALLES, ZARZAL, BUENAVENTURA, CAICEDONIA, SEVILLA, CALI, CANDELARIA, PALMIRA,
+    DAGUA, FLORIDA, JAMUNDI, LA_CUMBRE, PRADERA, VIJES, YUMBO
 }
