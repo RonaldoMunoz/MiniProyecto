@@ -1,9 +1,9 @@
-import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Candidato candidato[] = new Candidato[100];
         Menu m1 = new Menu();
+        Candidato candidato[] = new Candidato[100];
+        m1.cleanScreen();
         m1.insertCandidato(candidato);
         m1.actualizarCandidato(candidato);
 

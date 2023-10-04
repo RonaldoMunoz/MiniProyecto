@@ -47,4 +47,18 @@ public class Candidato extends Ciudadano {
     public void setN_votos(int n_votos) {
         this.n_votos = n_votos;
     }
+    @Override
+    //Se sobre-escribe el método toString() por defecto de la clase
+    public String toString()
+    {  
+      return "Nombre"+ getNombre() + "Identificacion:" + getCedula() +
+       "Partido Politico:" + getPartido_politico() +"Promesas:" +
+       getPromesas() + "Inclinación Politica :"+ getInclinacion()+"\n";
+     }  
+    
+    public void listarDatos(){
+        System.out.println("Nombre"+ getNombre() + "Identificacion:" + getCedula() + "Partido Politico:" + getPartido_politico() +"Promesas:" + getPromesas() + "Inclinación Politica :"+ getInclinacion()+"\n");
+
+    }
+
 }
