@@ -20,7 +20,7 @@ public class Menu {
     }
 
     public void insertCandidato(Candidato[] candidato) {
-         /* Creamos el array de objetos */
+    
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /*Iniciamos el for para ir creando los objetos nuevos */
             System.out.println("Ingrese el nombre del candidato:");
