@@ -143,6 +143,7 @@ public class Menu {
             if(candidato[i].getCedula().equals(buscar)){
                 candidato[i]=null;
                 System.out.println("El candidato: \n"+ candidato[i].toString()+"Ha sido eliminado con exito \n");
+                target.close();
                 break;
             }
         } 
