@@ -60,6 +60,7 @@ public class Menu {
                 System.out.println("");
             }
             else{
+                dato.close();
                 break;
             }
         }
@@ -100,6 +101,8 @@ public class Menu {
             for (String propuesta : propuestasArray) {
                 propuestas.add(propuesta.trim());
             }
+            dato.close();
+            target.close();
             candidato[i].setNombre(nombre);
             candidato[i].setCedula(identificacion);
             candidato[i].setC_origen(ciudadOrigen);
