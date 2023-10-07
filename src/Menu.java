@@ -65,7 +65,7 @@ public class Menu {
         ArrayList<String> promesas = new ArrayList<>();
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
-            System.out.println("Candidato #" + i+1 +"\n");
+            System.out.println("Candidato #" + i + 1 + "\n");
             System.out.println("Ingrese el nombre del candidato:");
             String nombre = dato.nextLine();
             System.out.println("Ingrese la identificación del candidato:");
@@ -104,8 +104,8 @@ public class Menu {
                 }
             } while (true);
             candidato[i] = new Candidato(nombre, identificacion, c1, p1, promesas, inclinacion, 0);
-        }        
-    }  
+        }
+    }
 
     public void actualizarCandidato(Candidato[] candidato) {
         Scanner target = new Scanner(System.in);
@@ -184,7 +184,7 @@ public class Menu {
                 candidato[i].listarDatos();
             }
         }
-        if(!find){
+        if (!find) {
             System.out.println("No se encontro el candidato");
         }
     }
