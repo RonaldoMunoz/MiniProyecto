@@ -1,10 +1,10 @@
 public enum C_origen {
     ANDALUCIA("Andalucia"),
     BUGALAGRANDE("Bugalagrande"),
-    EL_CERRITO("Elcerrito"), 
+    EL_CERRITO("El cerrito"), 
     GINEBRA("Ginebra"), 
     GUACARI("Guacari"), 
-    BUGA("Buga")
+    BUGA("Buga"),
     RIOFRIO("Rio frio"), 
     TRUJILLO("Trujillo"), 
     CALIMA("Calima"), 
@@ -25,4 +25,8 @@ public enum C_origen {
     public String displayNameEnum() {
         return this.name;
     }    
+    @Override
+    public String toString() {
+        return name;
+    }
 }
