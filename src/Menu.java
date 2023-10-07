@@ -18,11 +18,11 @@ public class Menu {
     }
 
     public void menu2(Candidato candidato[]) {
-
+        Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) {
             System.out.println("Ingrese los votos del candidato: \n");
             candidato[i].listarDatos();
-            Scanner dato = new Scanner(System.in);
+            System.out.println("N. Votos: \n");
             int votos = dato.nextInt();
             candidato[i].setN_votos(votos);
         }
@@ -177,11 +177,15 @@ public class Menu {
         Scanner target = new Scanner(System.in);
         System.out.println("Digite el nombre del candidato que desea buscar;... \n");
         String buscar = target.nextLine();
+        boolean find = false;
         for (int i = 0; i < candidato.length; i++) {
             if (candidato[i].getNombre().equals(buscar)) {
-                target.close();
+                find = true;
                 candidato[i].listarDatos();
             }
+        }
+        if(!find){
+            System.out.println("No se encontro el candidato");
         }
     }
 
@@ -191,9 +195,9 @@ public class Menu {
         String buscar = target.nextLine();
         for (int i = 0; i < candidato.length; i++) {
             if (candidato[i].getCedula().equals(buscar)) {
+                candidato[i].listarDatos();
+                System.out.println(" Ha sido eliminado con exito \n");
                 candidato[i] = null;
-                System.out.println("El candidato: \n" + candidato[i].toString() + "Ha sido eliminado con exito \n");
-                target.close();
                 break;
             }
         }
