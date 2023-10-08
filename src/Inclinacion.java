@@ -1,3 +1,3 @@
 public enum Inclinacion {
-    Derecha, Izquierda
+    DERECHA, IZQUIERDA
 }
