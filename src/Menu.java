@@ -36,14 +36,13 @@ public class Menu {
 
     public void propuestaAdd(ArrayList<String> promesas) {
         Scanner prop = new Scanner(System.in);
-        String promesa;
-        System.out.println("Agregue sus propuestas separadas por coma");
+        String promesa = "";
+        System.out.println("Agrege su propuesta");
         do {
             promesa = prop.nextLine();
             promesas.add(promesa);
             System.out.println("Propuesta ingresada con exito... \n");
             System.out.println("Si desea agregar una promesa digite -> [S] \n De lo contrario digite -> [N]");
-            promesa = " ";
             promesa = prop.nextLine().toUpperCase();
             if (promesa.equals("N")) {
                 break;
@@ -65,6 +64,7 @@ public class Menu {
         ArrayList<String> promesas = new ArrayList<>();
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
+            
             System.out.println("Candidato #" + i + 1 + "\n");
             System.out.println("Ingrese el nombre del candidato:");
             String nombre = dato.nextLine();
@@ -104,6 +104,8 @@ public class Menu {
                 }
             } while (true);
             candidato[i] = new Candidato(nombre, identificacion, c1, p1, promesas, inclinacion, 0);
+            promesas.clear();
+
         }
     }
 
