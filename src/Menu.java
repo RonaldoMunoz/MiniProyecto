@@ -56,12 +56,14 @@ public class Menu {
     }
 
     public void insertCandidato(Candidato[] candidato) {
+
         /* Creamos el array de objetos */
         String request = " ";
         Partido_p p1 = null;
         C_origen c1 = null;
         Inclinacion inclinacion = null;
         ArrayList<String> promesas = new ArrayList<>();
+
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
             
