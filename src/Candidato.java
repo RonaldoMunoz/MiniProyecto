@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +79,8 @@ public class Candidato extends Ciudadano {
                 getPromesas(),
                 getInclinacion(),
                 getN_votos()));
+
+                
 
     }
 
