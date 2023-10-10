@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +68,8 @@ public class Candidato extends Ciudadano {
                 getPartido_politico().displayNameEnum(),
                 getPromesas(),
                 getInclinacion()));
+
+                
 
     }
 
