@@ -144,6 +144,31 @@ public class App {
                     }
 
                     break;
+                case 3:
+                    // Mostrar partido con más candidatos
+                    Map<Partido_p, Integer> contadorPartidos = new HashMap<>();
+
+                    for (Candidato candidatoActual : candidato) {
+                        Partido_p partido = candidatoActual.getPartido_politico();
+                        contadorPartidos.put(partido, contadorPartidos.getOrDefault(partido, 0) + 1);
+                    }
+
+                    Partido_p partidoMasCandidatos = null;
+                    int maxCandidatos = 0;
+
+                    for (Map.Entry<Partido_p, Integer> entry : contadorPartidos.entrySet()) {
+                        if (entry.getValue() > maxCandidatos) {
+                            maxCandidatos = entry.getValue();
+                            partidoMasCandidatos = entry.getKey();
+                        }
+                    }
+
+                    System.out.println(
+                            "El partido con más candidatos inscritos es: " + partidoMasCandidatos.displayNameEnum());
+                    break;
+                case 4:
+                    System.out.println("Saliendo del programa...");
+                    break;
                 default:
                     System.out.println("Ingrese una opción válida");
             }
