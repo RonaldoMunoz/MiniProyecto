@@ -113,6 +113,40 @@ public class App {
             System.out.println("[4] <- Salir \n");
 
             opcionMenu3 = menu3.nextInt();
+            switch (opcionMenu3) {
+                case 1:
+                    // Solicitar el número de votos para cada candidato
+                    for (int i = 0; i < candidato.length; i++) {
+                        System.out.println("Ingrese el número de votos para " + candidato[i].getNombre() + ": ");
+                        int votos = opcionesm1.nextInt();
+                        candidato[i].setN_votos(votos);
+                    }
+                    break;
+                case 2:
+                    // Mostrar el candidato ganador
+                    Candidato ganador = candidato[0];
+
+                    for (int i = 1; i < candidato.length; i++) {
+                        if (candidato[i].getN_votos() > ganador.getN_votos()) {
+                            ganador = candidato[i];
+                        }
+                    }
+                    // Mostrar el candidato ganador
+                    System.out.println("El candidato que ganó es: " + ganador.getNombre());
+                    System.out.println("Cédula del ganador: " + ganador.getCedula());
+
+                    // Mostrar Promesas del candidato ganador
+                    // Al mostrar al candidato se muestran todas las promesas de los otros
+                    // candidatos
+                    System.out.println("Propuestas del candidato ganador (" + ganador.getNombre() + "):");
+                    for (String propuesta : ganador.getPromesas()) {
+                        System.out.println(propuesta);
+                    }
+
+                    break;
+                default:
+                    System.out.println("Ingrese una opción válida");
+            }
 
         } while (opcionMenu3 != 4);
     }
