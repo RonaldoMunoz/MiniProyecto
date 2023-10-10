@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Menu {
 
@@ -20,11 +19,13 @@ public class Menu {
     public void menu2(Candidato candidato[]) {
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) {
+            if(candidato[i] != null){
             System.out.println("Ingrese los votos del candidato: \n");
             candidato[i].listarDatos();
             System.out.println("N. Votos: \n");
             int votos = dato.nextInt();
             candidato[i].setN_votos(votos);
+            }
         }
 
     }
@@ -36,14 +37,13 @@ public class Menu {
 
     public void propuestaAdd(ArrayList<String> promesas) {
         Scanner prop = new Scanner(System.in);
-        String promesa;
-        System.out.println("Agregue sus propuestas separadas por coma");
+        String promesa = "";
+        System.out.println("Agrege su propuesta");
         do {
             promesa = prop.nextLine();
             promesas.add(promesa);
             System.out.println("Propuesta ingresada con exito... \n");
             System.out.println("Si desea agregar una promesa digite -> [S] \n De lo contrario digite -> [N]");
-            promesa = " ";
             promesa = prop.nextLine().toUpperCase();
             if (promesa.equals("N")) {
                 break;
@@ -54,6 +54,7 @@ public class Menu {
             }
 
         } while (true);
+
     }
 
     public void insertCandidato(Candidato[] candidato) {
@@ -63,10 +64,9 @@ public class Menu {
         Partido_p p1 = null;
         C_origen c1 = null;
         Inclinacion inclinacion = null;
-        ArrayList<String> promesas = new ArrayList<>();
-
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
+
             System.out.println("Candidato #" + i + 1 + "\n");
             System.out.println("Ingrese el nombre del candidato:");
             String nombre = dato.nextLine();
@@ -94,7 +94,9 @@ public class Menu {
                 }
 
             } while (true);
+            ArrayList<String> promesas = new ArrayList<>();
             propuestaAdd(promesas);
+
             do {
                 try {
                     System.out.println("Ingrese Su inclinacion politica;....");
@@ -106,6 +108,7 @@ public class Menu {
                 }
             } while (true);
             candidato[i] = new Candidato(nombre, identificacion, c1, p1, promesas, inclinacion, 0);
+
         }
     }
 
@@ -116,57 +119,59 @@ public class Menu {
         System.out.println("Digite el nombre del candidato que desea actualizar;... \n");
         String buscar = target.nextLine();
         for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i].getNombre().equals(buscar)) {
-                Partido_p p1 = null;
-                C_origen c1 = null;
-                Inclinacion inclinacion = null;
-                ArrayList<String> promesas = new ArrayList<>();
+            if (candidato[i] != null) {
+                if (candidato[i].getNombre().equals(buscar)) {
+                    Partido_p p1 = null;
+                    C_origen c1 = null;
+                    Inclinacion inclinacion = null;
 
-                System.out.println("Ingrese el nombre del candidato:");
-                String nombre = dato.nextLine();
-                System.out.println("Ingrese la identificación del candidato:");
-                String identificacion = dato.nextLine();
-                do {
-                    try {
-                        System.out.println("Ingrese la ciudad de origen del candidato:");
-                        String c_origen = dato.nextLine().replace(" ", "_");
-                        c_origen.replace(" ", "_");
-                        c1 = C_origen.valueOf(c_origen.toUpperCase());
-                        System.out.println("check");
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Ingrese una ciudad valida");
-                    }
-                } while (true);
-                do {
-                    try {
-                        System.out.println("Ingrese el partido politico al que pertenece");
-                        String partido_politico = dato.nextLine().replace(" ", "_");
-                        p1 = Partido_p.valueOf(partido_politico.toUpperCase());
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Digite una opcion valida");
-                    }
+                    System.out.println("Ingrese el nombre del candidato:");
+                    String nombre = dato.nextLine();
+                    System.out.println("Ingrese la identificación del candidato:");
+                    String identificacion = dato.nextLine();
+                    do {
+                        try {
+                            System.out.println("Ingrese la ciudad de origen del candidato:");
+                            String c_origen = dato.nextLine().replace(" ", "_");
+                            c_origen.replace(" ", "_");
+                            c1 = C_origen.valueOf(c_origen.toUpperCase());
+                            System.out.println("check");
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Ingrese una ciudad valida");
+                        }
+                    } while (true);
+                    do {
+                        try {
+                            System.out.println("Ingrese el partido politico al que pertenece");
+                            String partido_politico = dato.nextLine().replace(" ", "_");
+                            p1 = Partido_p.valueOf(partido_politico.toUpperCase());
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Digite una opcion valida");
+                        }
 
-                } while (true);
-                propuestaAdd(promesas);
-                do {
-                    try {
-                        System.out.println("Ingrese Su inclinacion politica;...." + inclinacion);
-                        inclinacion_p = dato.nextLine();
-                        inclinacion = Inclinacion.valueOf(inclinacion_p.toUpperCase());
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Digite una opcion valida");
-                    }
-                } while (true);
+                    } while (true);
+                    ArrayList<String> promesas = new ArrayList<>();
+                    propuestaAdd(promesas);
+                    do {
+                        try {
+                            System.out.println("Ingrese Su inclinacion politica;...." + inclinacion);
+                            inclinacion_p = dato.nextLine();
+                            inclinacion = Inclinacion.valueOf(inclinacion_p.toUpperCase());
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Digite una opcion valida");
+                        }
+                    } while (true);
 
-                candidato[i].setNombre(nombre);
-                candidato[i].setCedula(identificacion);
-                candidato[i].setC_origen(c1);
-                candidato[i].setInclinacion(inclinacion);
-                candidato[i].setPromesas(promesas);
-                candidato[i].setPartido_politico(p1);
+                    candidato[i].setNombre(nombre);
+                    candidato[i].setCedula(identificacion);
+                    candidato[i].setC_origen(c1);
+                    candidato[i].setInclinacion(inclinacion);
+                    candidato[i].setPromesas(promesas);
+                    candidato[i].setPartido_politico(p1);
+                }
             } else {
                 System.out.println("El usuario no fue encontrado.\n Revisa si escribiste su nombre bien");
             }
@@ -181,9 +186,11 @@ public class Menu {
         String buscar = target.nextLine();
         boolean find = false;
         for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i].getNombre().equals(buscar)) {
-                find = true;
-                candidato[i].listarDatos();
+            if (candidato[i] != null) {
+                if (candidato[i].getNombre().equals(buscar)) {
+                    find = true;
+                    candidato[i].listarDatos();
+                }
             }
         }
         if (!find) {
@@ -196,13 +203,25 @@ public class Menu {
         System.out.println("Digite el numero de cedula del candidato que desea eliminar;... \n");
         String buscar = target.nextLine();
         for (int i = 0; i < candidato.length; i++) {
-            if (candidato[i].getCedula().equals(buscar)) {
-                candidato[i].listarDatos();
-                System.out.println(" Ha sido eliminado con exito \n");
-                candidato[i] = null;
-                break;
+            if (candidato[i] != null) {
+                if ((candidato[i].getCedula()).equals(buscar)) {
+                    candidato[i].listarDatos();
+                    System.out.println(" Ha sido eliminado con exito \n");
+                    candidato[i] = null;
+                    break;
+                }
             }
         }
 
+    }
+
+    public boolean nullArray(Candidato[] candidato) {
+        for (int i = 0; i < candidato.length; i++) {
+            if (candidato[i] != null) {
+                return false;
+                // Si encontramos un elemento no nulo, salimos del bucle
+            }
+        }
+        return true;
     }
 }

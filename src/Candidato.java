@@ -68,6 +68,17 @@ public class Candidato extends Ciudadano {
                 getPartido_politico().displayNameEnum(),
                 getPromesas(),
                 getInclinacion()));
+    }
+    public void listarDatosVotos(){
+                System.out.println(String.format(
+                "Nombre: %s\nIdentificacion: %s\nCiudad de origen: %s\nPartido Politico: %s\nPromesas: %s\nInclinación Politica: %s\n Votos: %s",
+                getNombre(),
+                getCedula(),
+                getC_origen().displayNameEnum(),
+                getPartido_politico().displayNameEnum(),
+                getPromesas(),
+                getInclinacion(),
+                getN_votos()));
 
                 
 
