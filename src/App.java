@@ -1,7 +1,5 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -44,7 +42,7 @@ public class App {
 
                     break;
                 case B:
-                    if (candidato[0] == null) {
+                    if (m1.nullArray(candidato) == true) {
                         System.out.println("Primero debes ingresar almenos un candidato");
                         break;
                     } else {
@@ -52,7 +50,7 @@ public class App {
                         break;
                     }
                 case C:
-                    if (candidato[0] == null) {
+                    if (m1.nullArray(candidato) == true) {
                         System.out.println("Primero debes ingresar almenos un candidato");
                         break;
                     } else {
@@ -62,7 +60,7 @@ public class App {
                         break;
                     }
                 case D:
-                    if (candidato[0] == null) {
+                    if (m1.nullArray(candidato) == true) {
                         System.out.println("Primero debes ingresar almenos un candidato");
                         break;
                     } else {
@@ -72,13 +70,16 @@ public class App {
                         break;
                     }
                 case E:
-                    if (candidato[0] == null) {
+                    if (m1.nullArray(candidato) == true) {
                         System.out.println("Primero debes ingresar almenos un candidato");
                         break;
                     } else {
 
                         for (int i = 0; i < candidato.length; i++) {
-                            candidato[i].listarDatos();
+                            if (candidato[i] != null) {
+                                candidato[i].listarDatos();
+                            }
+
                         }
                         System.out.println("Presiona Enter para continuar...");
                         opcionesm1.nextLine();
@@ -86,7 +87,7 @@ public class App {
                     }
 
                 case F:
-                    if (candidato[0] == null) {
+                    if (m1.nullArray(candidato) == true) {
                         System.out.println("Primero debes ingresar almenos un candidato");
                         break;
                     } else {
@@ -98,10 +99,15 @@ public class App {
             }
         } while (end == false);
 
-        m1.menu2(candidato); /*Puede modificarlo */
+        m1.menu2(candidato); /* Puede modificarlo */
         // Parte 3 de aqui para bajo
-        for (int i = 0; i < candidato.length; i++) { /*Forma brusca de mostrar los datos de los candidatos puede ser mejorado */
-            candidato[i].listarDatos();
+        for (int i = 0; i < candidato.length; i++) { /*
+                                                      * Forma brusca de mostrar los datos de los candidatos puede ser
+                                                      * mejorado
+                                                      */
+            if (candidato[i] != null) {
+                candidato[i].listarDatosVotos();
+            }
         }
 
     }
