@@ -103,40 +103,25 @@ public class App {
         // MENU PARTE 3
         Scanner menu3 = new Scanner(System.in);
         int opcionMenu3;
-        boolean flag = false;
-        while(flag != true){
-        while (true) {
-            try {
-                for (int i = 0; i < candidato.length; i++) {
-                    if (candidato[i] != null) {
-                        System.out.println("Ingrese el número de votos para " + candidato[i].getNombre() + ": ");
-                        int votos = opcionesm1.nextInt();
-                        candidato[i].setN_votos(votos);
-                    }
+        while(true){
+            int valorMaximo = Integer.MIN_VALUE;
+            int value = 0;
+            m1.votacion(candidato);
+            for (Candidato obj : candidato) {
+                if (obj.getN_votos() > valorMaximo) {
+                    valorMaximo = obj.getN_votos();     
                 }
+            }
+            for(Candidato obj : candidato){
+                if(obj.getN_votos() == valorMaximo ){
+                    value +=1;
+                }
+            }
+            // Comprobar si el numero mayor aparece una vez
+            if (value == 1) {
                 break;
-            } catch (InputMismatchException e) {
-                System.out.println("Haz ingresado un tipo de dato no valido\n");
-                opcionesm1.nextLine(); /* Limpiamos el buffer */
-            } }
-
-            for (int i = 0; i < candidato.length; i++) {
-                for (int j = 0; j < candidato.length; j++) {
-                    if (i == j) {
-                        continue;
-                    }
-                    if (candidato[i].getN_votos() > candidato[j].getN_votos()) {
-                        flag = true;
-                    } else {
-                        flag = false;
-                        break;
-                    }
-                }
-                if(flag = false) {
-                    System.out.println(
-                            "No hay un candidato que haya ganado la votacion, se necesita hacer una segunda vuelta\n");
-                    opcionesm1.nextLine();
-                }
+            } else {
+                System.out.println("Ningun candidato ha ganado, se iniciara la segunda vuelta");
             }
         }
         do {

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Menu {
 
@@ -66,8 +67,6 @@ public class Menu {
         Inclinacion inclinacion = null;
         Scanner dato = new Scanner(System.in);
         for (int i = 0; i < candidato.length; i++) { /* Iniciamos el for para ir creando los objetos nuevos */
-
-            System.out.println("Candidato #" + i + 1 + "\n");
             System.out.println("Ingrese el nombre del candidato:");
             String nombre = dato.nextLine();
             System.out.println("Ingrese la identificación del candidato:");
@@ -135,7 +134,7 @@ public class Menu {
                             String c_origen = dato.nextLine().replace(" ", "_");
                             c_origen.replace(" ", "_");
                             c1 = C_origen.valueOf(c_origen.toUpperCase());
-                            System.out.println("check");
+                            
                             break;
                         } catch (IllegalArgumentException e) {
                             System.out.println("Ingrese una ciudad valida");
@@ -223,5 +222,23 @@ public class Menu {
             }
         }
         return true;
+    }
+
+    public void votacion(Candidato[] candidato){
+        Scanner votos = new Scanner(System.in);
+        while (true) {
+            try {
+                for (int i = 0; i < candidato.length; i++) {
+                    if (candidato[i] != null) {
+                        System.out.println("Ingrese el número de votos para " + candidato[i].getNombre() + ": ");
+                        int voto = votos.nextInt();
+                        candidato[i].setN_votos(voto);
+                    }
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Haz ingresado un tipo de dato no valido\n");
+                votos.nextLine(); /* Limpiamos el buffer */
+            } }
     }
 }
