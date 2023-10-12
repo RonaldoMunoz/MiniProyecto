@@ -168,31 +168,36 @@ public class App {
                             "El partido con más candidatos inscritos es: " + partidoMasCandidatos.displayNameEnum());
                     break;
                 case 4:
-                    System.out.println("Saliendo del programa...");
+                    /* Mostrar top 3 de ciudades con menos candidatos */
+                    Map<String, Integer> conteoCiudades = new HashMap<>();
+                    ArrayList<String> ciudades = new ArrayList<>();
+
+                    for (Candidato c : candidato) {
+                        String ciudadOrigen = c.getC_origen().toString();
+                        ciudades.add(ciudadOrigen);
+                        conteoCiudades.merge(ciudadOrigen, 1, Integer::sum);
+                    }
+
+                    ArrayList<String> top3Ciudades = new ArrayList<>(conteoCiudades.keySet());
+                    top3Ciudades.sort((c1, c2) -> conteoCiudades.get(c1).compareTo(conteoCiudades.get(c2)));
+                    top3Ciudades = new ArrayList<>(top3Ciudades.subList(0, Math.min(3, top3Ciudades.size())));
+
+                    /* Imprimir el top 3 de ciudades con menos candidatos */
+                    System.out.println("\nTop 3 de ciudades con menos candidatos:");
+                    for (String ciudad : top3Ciudades) {
+                        System.out.println(ciudad + ": " + conteoCiudades.get(ciudad));
+
+                    }
                     break;
+                case 5:
+                    System.out.println("Salir del menu");
+                    break;
+
                 default:
                     System.out.println("Ingrese una opción válida");
             }
 
         } while (opcionMenu3 != 4);
-        /*  Calcular el top 3 de ciudades con menos candidatos*/
-        Map<String, Integer> conteoCiudades = new HashMap<>();
-        ArrayList<String> ciudades = new ArrayList<>();
 
-        for (Candidato c : candidato) {
-            String ciudadOrigen = c.getC_origen().toString();
-            ciudades.add(ciudadOrigen);
-            conteoCiudades.merge(ciudadOrigen, 1, Integer::sum);
-        }
-
-        ArrayList<String> top3Ciudades = new ArrayList<>(conteoCiudades.keySet());
-        top3Ciudades.sort((c1, c2) -> conteoCiudades.get(c1).compareTo(conteoCiudades.get(c2)));
-        top3Ciudades = new ArrayList<>(top3Ciudades.subList(0, Math.min(3, top3Ciudades.size())));
-
-        /*  Imprimir el top 3 de ciudades con menos candidatos*/
-        System.out.println("\nTop 3 de ciudades con menos candidatos:");
-        for (String ciudad : top3Ciudades) {
-            System.out.println(ciudad + ": " + conteoCiudades.get(ciudad));
-        }
     }
 }
