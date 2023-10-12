@@ -111,7 +111,8 @@ public class App {
             System.out.println("[1] <- Ingresar número de votos \n");
             System.out.println("[2] <- Mostrar resultados \n");
             System.out.println("[3] <- Mostrar resultados del partido con más candidatos inscritos \n");
-            System.out.println("[4] <- Salir \n");
+            System.out.println("[4] <- Mostrar top 3 de ciudades con menos candidatos \n");
+            System.out.println("[5] <- Salir \n");
 
             opcionMenu3 = menu3.nextInt();
             switch (opcionMenu3) {
@@ -182,12 +183,20 @@ public class App {
                     top3Ciudades.sort((c1, c2) -> conteoCiudades.get(c1).compareTo(conteoCiudades.get(c2)));
                     top3Ciudades = new ArrayList<>(top3Ciudades.subList(0, Math.min(3, top3Ciudades.size())));
 
-                    /* Imprimir el top 3 de ciudades con menos candidatos */
-                    System.out.println("\nTop 3 de ciudades con menos candidatos:");
-                    for (String ciudad : top3Ciudades) {
-                        System.out.println(ciudad + ": " + conteoCiudades.get(ciudad));
+                    /* Comprobar si todas las ciudades tienen el mismo número de candidatos */
+                    boolean todasCiudadesIguales = top3Ciudades.size() > 0 && conteoCiudades
+                            .get(top3Ciudades.get(0)) == conteoCiudades.get(top3Ciudades.get(top3Ciudades.size() - 1));
 
+                    if (todasCiudadesIguales) {
+                        System.out.println("Las ciudades tienen el mismo numero de candidatos");
+                    } else {
+                        /* Imprimir el top 3 de ciudades con menos candidatos */
+                        System.out.println("\nTop 3 de ciudades con menos candidatos:");
+                        for (String ciudad : top3Ciudades) {
+                            System.out.println(ciudad + ": " + conteoCiudades.get(ciudad));
+                        }
                     }
+
                     break;
                 case 5:
                     System.out.println("Salir del menu");
@@ -197,7 +206,7 @@ public class App {
                     System.out.println("Ingrese una opción válida");
             }
 
-        } while (opcionMenu3 != 4);
+        } while (opcionMenu3 != 5);
 
     }
 }
