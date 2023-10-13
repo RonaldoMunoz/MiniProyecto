@@ -14,23 +14,22 @@ public class App {
         m1.cleanScreen();
         while (true) {
             try {
-                System.out.println("Ingresa la cantidad de candidatos que vas a ingresar:");
+                System.out.println("\tIngresa la cantidad de candidatos que vas a ingresar:");
                 size = sizeA.nextInt();
                 break; // Salir del bucle si la entrada es válida
             } catch (InputMismatchException e) {
                 sizeA.nextLine(); // Limpiar el búfer de entrada
             }
         }
-
         Candidato candidato[] = new Candidato[size];
         Menu1op option1 = null;
         m1.cleanScreen();
         boolean end = false;
         String opt;
-
         do {
             while (true) {
                 try {
+                    m1.cleanScreen();
                     m1.menu1();
                     opt = opcionesm1.nextLine().toUpperCase();
                     option1 = Menu1op.valueOf(opt);
@@ -42,64 +41,71 @@ public class App {
             }
             switch (option1) {
                 case A:
+                    m1.cleanScreen();
                     m1.insertCandidato(candidato);
 
                     break;
                 case B:
+                    m1.cleanScreen();
                     if (m1.nullArray(candidato) == true) {
-                        System.out.println("Primero debes ingresar almenos un candidato");
+                        System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
                         m1.actualizarCandidato(candidato);
                         break;
                     }
                 case C:
+                    m1.cleanScreen();
                     if (m1.nullArray(candidato) == true) {
-                        System.out.println("Primero debes ingresar almenos un candidato");
+                        System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
                         m1.eliminarCandidato(candidato);
-                        System.out.println("Presiona Enter para continuar...");
+                        System.out.println("\tPresiona Enter para continuar...");
                         opcionesm1.nextLine();
                         break;
                     }
                 case D:
+                    m1.cleanScreen();
                     if (m1.nullArray(candidato) == true) {
-                        System.out.println("Primero debes ingresar almenos un candidato");
+                        System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
                         m1.buscarCandidato(candidato);
-                        System.out.println("Presiona Enter para continuar...");
+                        System.out.println("\tPresiona Enter para continuar...");
                         opcionesm1.nextLine();
                         break;
                     }
                 case E:
+                    m1.cleanScreen();
                     if (m1.nullArray(candidato) == true) {
-                        System.out.println("Primero debes ingresar almenos un candidato");
+                        System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
-
                         for (int i = 0; i < candidato.length; i++) {
                             if (candidato[i] != null) {
                                 candidato[i].listarDatos();
                             }
                         }
-                        System.out.println("Presiona Enter para continuar...");
+                        System.out.println("\tPresiona Enter para continuar...");
                         opcionesm1.nextLine();
                         break;
                     }
                 case F:
+                    m1.cleanScreen();
                     if (m1.nullArray(candidato) == true) {
-                        System.out.println("Primero debes ingresar almenos un candidato");
+                        System.out.println("\tPrimero debes ingresar almenos un candidato");
                         break;
                     } else {
                         end = true;
                         break;
                     }
                 default:
-                    System.out.println("Ingrese una opcion valida");
+                    m1.cleanScreen();
+                    System.out.println("\tIngrese una opcion valida\n");
             }
         } while (end == false);
+        m1.cleanScreen();
         // MENU PARTE 3
         Scanner menu3 = new Scanner(System.in);
         int opcionMenu3;
@@ -125,11 +131,11 @@ public class App {
             }
         }
         do {
-            System.out.println("\n Menú de Opciones: \n");
-            System.out.println("[1] <- Mostrar Ganador \n");
-            System.out.println("[2] <- Mostar partido con más candidatos inscritos \n");
-            System.out.println("[3] <- Mostrar top 3 de ciudades con menos candidatos \n");
-            System.out.println("[4] <- Salir \n");
+            System.out.println("\n \t Menú de Opciones: \n");
+            System.out.println("\t[1] <- Mostrar Ganador \n");
+            System.out.println("\t[2] <- Mostar partido con más candidatos inscritos \n");
+            System.out.println("\t[3] <- Mostrar top 3 de ciudades con menos candidatos \n");
+            System.out.println("\t[4] <- Salir \n");
             opcionMenu3 = menu3.nextInt();
 
             switch (opcionMenu3) {
@@ -143,7 +149,7 @@ public class App {
                         }
                     }
                     // Mostrar el candidato ganador
-                    System.out.println("El candidato que ganó es:\n");
+                    System.out.println("\tEl candidato que ganó es:\n");
                     ganador.listarDatosVotos();
                     break;
                 case 2:
@@ -196,7 +202,7 @@ public class App {
                     }
                     break;
                 case 4:
-                    System.out.println("Salir del menu");
+                    System.out.println("Saliendo del menu");
                     break;
                 default:
                     System.out.println("Ingrese una opción válida");

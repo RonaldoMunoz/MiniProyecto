@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public enum Partido_p {
     LA_FUERZA_DE_LA_PAZ("La Fuerza de la Paz"),
     MOVIMIENTO_FUERZA_CIUDADANA("Movimiento fuerza ciudadano"),
@@ -29,8 +31,5 @@ public enum Partido_p {
     public String displayNameEnum() {
         return this.name;
     }    
-    @Override
-    public String toString() {
-        return name;
-    }
 }
+
