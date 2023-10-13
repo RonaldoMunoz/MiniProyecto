@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public enum C_origen {
     ANDALUCIA("Andalucia"),
     BUGALAGRANDE("Bugalagrande"),
@@ -25,8 +27,4 @@ public enum C_origen {
     public String displayNameEnum() {
         return this.name;
     }    
-    @Override
-    public String toString() {
-        return name;
-    }
 }
